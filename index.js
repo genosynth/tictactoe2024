@@ -26,33 +26,11 @@ function mark(markPosition){
         
         if (gameBoard.board[markPosition] == ``){
             gameBoard.board[markPosition] = gameFlowObject.currentPlayer.marker
+            swapPlayer()
         }   
             
  
-       const playerX = (checkWinner('X'))
-       const playerO =(checkWinner('O'))
-
-       if (playerX){
-        alert("Player 1 Wins")
-        gameBoard.scoreP1++
-        gameBoard.winner=player1.name
-        
-        return reset()}
-       if (playerO){
-        gameBoard.scoreP2++
-        gameBoard.winner=player2.name
-        
-        alert("Player 2 Wins")
-        return reset() }
-      
-    
-    
-   
-    if(gameBoard.winner==null && gameBoard.board.includes(``)==false){
-        gameBoard.winner='Draw'
-        alert("It's a draw!")
-        reset()
-    }
+ 
     console.log(gameBoard)
     
 }
@@ -65,6 +43,33 @@ function swapPlayer(){
 
 }
 
+function checkEndGameSetScores(){
+      const playerX = (checkWinner('X'))
+       const playerO =(checkWinner('O'))
+
+       if (playerX){
+        //alert("Player 1 Wins")
+        gameBoard.scoreP1++
+        gameBoard.winner=player1.name
+        
+        return reset()}
+       if (playerO){
+        gameBoard.scoreP2++
+        gameBoard.winner=player2.name
+        
+        //alert("Player 2 Wins")
+        return reset() }
+      
+    
+    
+   
+    if(gameBoard.winner==null && gameBoard.board.includes(``)==false){
+        gameBoard.winner='Draw'
+        //alert("It's a draw!")
+        reset()
+    }
+}
+
 function UI(){
 
 
@@ -73,6 +78,8 @@ function UI(){
     for (let x=0; x<gameBoard.board.length; x++){
         board[x].innerHTML = gameBoard.board[x]
     }
+
+    checkEndGameSetScores()
     
     let player1score = document.getElementById('player1score')
     console.log(player1score.innerText)
@@ -80,6 +87,10 @@ function UI(){
 
     let player2score = document.getElementById('player2score')
     player2score.innerText=gameBoard.scoreP2
+
+   
+
+     
    
   
 }
@@ -91,14 +102,12 @@ function play(){
         board[i].addEventListener("click",()=>{
             //console.log(i)            
             mark(i)
-            swapPlayer()
+            //swapPlayer()
             UI()
 
         })
     }
 }
-
-
 
 
 function checkWinner(symbol){
@@ -124,6 +133,8 @@ function checkWinner(symbol){
 }
 
 function reset(){
+
+    alert(gameBoard.winner+" Wins")
     gameBoard.board = [``,``,``,``,``,``,``,``,``]
     gameBoard.winner = null
     

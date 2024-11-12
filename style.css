@@ -4,6 +4,9 @@
     grid-template-columns: auto auto auto;
     background-color: #2196F3;
     padding: 10px;
+    width: 50%;
+    margin: 0 25%;
+    border-radius: 1%;
 
 }
 
@@ -13,6 +16,9 @@
     padding: 20px;
     font-size: 30px;
     text-align: center;
+    height: 20px;
+   
+    
   }
 
 .scoreboard {
@@ -26,4 +32,11 @@
 .scoreboard h2 {
     padding: 5%;
     font-size: 60px;
+}
+
+body {
+    text-align: center;
+    font-size: 40px;
+    align-items: center;
+    justify-content: center;
 }
